@@ -1,0 +1,40 @@
+// HW2_Q1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
+// QUESTION 1:
+// Write a program	that	asks the	user	to	enter	a	number	of	quarters,	dimes,	nickels and	
+// pennies and then outputs	the	monetary	value	of	the	coins	in	the	format	of	dollars and remaining cents.
+
+#include <iostream>
+using namespace std;
+
+const int QUARTER = 25;
+const int DIME = 10;
+const int NICKEL = 5;
+const int PENNY = 1;
+
+int main()
+{
+    // std::cout << "Hello World!\n";
+    int numQuarter, numDime, numNickel, numPenny;
+    int totalCoins, totalDollar, totalCents;
+
+    cout << "Please enter number of coins: \n" << endl;
+    cout << "Number of Quarters: ";
+    cin >> numQuarter;
+
+    cout << "Number of Dimes: ";
+    cin >> numDime;
+
+    cout << "Number of Nickels: ";
+    cin >> numNickel;
+
+    cout << "Number of Pennies: ";
+    cin >> numPenny;
+
+    totalCoins = (numQuarter * QUARTER) + (numDime * DIME) + (numNickel * NICKEL) + (numPenny * PENNY);
+    totalDollar = (totalCoins / 100);
+    totalCents = (totalCoins % 100);
+
+    cout <<"The total is " << totalDollar << " dollars and " << totalCents << " cents." << endl;
+
+    return 0;
