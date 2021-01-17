@@ -1,0 +1,47 @@
+// HW2_Q2.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
+// QUESTION 2:
+// Write	a	program	that	asks the	user	to	enter	an	amount	of	money	in	the	format	of	dollars	and	
+// remaining	cents.The	program	should	calculateand print	the	minimum	number	of	coins
+// (quarters, dimes, nickelsand pennies)	that	are	equivalent	to	the	given	amount.
+
+// Hint:	In	order	to	find	the	minimum	number	of	coins, first	find	the	maximum	number	of
+// quarters	that	fit	in	the	given	amount	of	money, then	find	the	maximum	number	of	dimes that	fit	in	the	remaining	amount, and so	on
+
+#include <iostream>
+using namespace std;
+
+const int QUARTER = 25;
+const int DIME = 10;
+const int NICKEL = 5;
+const int PENNY = 1;
+int main()
+{
+    int dollarAmount, centAmount;
+    int numQuarter, numDime, numNickel, numPenny, total;
+    int remainder;
+
+    cout << "Please enter your amount in the format of dollars and cents separated by a space: " << endl;
+    cin >> dollarAmount >> centAmount;
+
+    total = (dollarAmount * 100) + centAmount;
+
+    numQuarter = (total / QUARTER);
+    remainder = (total % QUARTER);
+
+    numDime = (total / DIME);
+    remainder = (remainder % DIME);
+
+    numNickel = (total / NICKEL);
+    remainder = (remainder % NICKEL);
+
+    numPenny = (total / PENNY);
+    
+    cout << endl;
+    cout << dollarAmount << " dollars and " << centAmount << " cents are:" << endl;
+
+    cout << numQuarter << " quarters\t" << numDime << " dimes\t" << numNickel << " nickels\t" << numPenny << " pennies";
+
+    cout << endl;
+    return 0;
+}
