@@ -1,0 +1,55 @@
+// HW2_Q3.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
+// QUESTION 3: 
+// Suppose	John	and	Bill	worked for	some	time	and	we	want	to	calculate	the	total	time	both	of	
+// them	worked.Write	a	program	that	reads	number	of	days, hours, minutes	each	of	them
+// worked, and prints	the	total	time	both	of	them	worked	together	as	days, hours, minutes.
+
+// Hint: Try	to	adapt	the	elementary	method	for	addition	of	numbers	to	this	use.
+
+#include <iostream>
+using namespace std;
+
+const int minDays = 1440; // (24 hours * 60 min/hour) = 1440 min/day
+const int minHour = 60;  // (60 min = 1 hour)
+
+int main()
+{
+    int daysJay, hoursJay, minJay;
+    int daysBill, hoursBill, minBill;
+    int totalDays, totalHours, totalMin, remainderTime;
+
+    cout << "Please enter the number of days John has worked: ";
+    cin >> daysJay;
+    cout << "Please enter the number of hours John has worked: ";
+    cin >> hoursJay;
+    cout << "Please enter the number of minutes John has worked: ";
+    cin >> minJay;
+
+    cout << endl;
+
+    cout << "Please enter the number of days Bill has worked: ";
+    cin >> daysBill;
+    cout << "Please enter the number of hours Bill has worked: ";
+    cin >> hoursBill;
+    cout << "Please enter the number of minutes Bill has worked: ";
+    cin >> minBill;
+
+    totalMin = ((daysJay + daysBill) * minDays) + ((hoursJay + hoursBill) * minHour) + (minJay + minBill);
+    cout << endl;
+
+    totalDays = (totalMin / minHour);
+    remainderTime = (totalMin % minHour);
+
+    totalHours = (remainderTime / minHour);
+    remainderTime = (remainderTime % minHour);
+
+    totalMin = remainderTime;
+    cout << endl;
+
+    cout << "The total time both of them worked together is: " << totalDays << "days, " << totalHours << "hours and " << totalMin << "minutes. " << endl;
+
+    cout << endl;
+
+    return 0;
+}
