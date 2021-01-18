@@ -1,0 +1,37 @@
+// HW2_Q4.cpp : This file contains the 'main' function. Program execution begins and ends there.
+
+// QUESTION 4:
+
+//Write	a	program	that	reads	from	the	user	two positive	integers,	and	prints	the	result	of	
+// when	we add, subtract	multiply, divide, divand mod	them.
+// Your	program	should	interact	with	the	user	exactly as	it	shows	in	the	following	example :
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int num1, num2;
+    int addition, subtraction, multiplication, div, mod;
+    double division;
+
+    cout << "Please enter two positive integers, separated by a space: " << endl;
+
+    cin >> num1 >> num2;
+
+    addition = num1 + num2;
+    subtraction = num1 - num2;
+    multiplication = num1 * num2;
+    division = (double)num1 / (double)num2; // typecast double
+    div = num1 / num2;
+    mod = num1 % num2;
+
+    cout << num1 << " + " << num2 << " = " << addition << endl;
+    cout << num1 << " - " << num2 << " = " << subtraction << endl;
+    cout << num1 << " * " << num2 << " = " << multiplication << endl;
+    cout << num1 << " / " << num2 << " = " << division << endl; 
+    cout << num1 << " div " << num2 << " = " << div << endl;
+    cout << num1 << " mod " << num2 << " = " << mod << endl;
+
+    return 0;
+}
