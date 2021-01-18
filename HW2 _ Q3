@@ -20,34 +20,34 @@ int main()
     int totalDays, totalHours, totalMin, remainderTime;
 
     cout << "Please enter the number of days John has worked: ";
-    cin >> daysJay;
+    cin >> daysJay;  // 2 days
     cout << "Please enter the number of hours John has worked: ";
-    cin >> hoursJay;
+    cin >> hoursJay;  // 12 hours
     cout << "Please enter the number of minutes John has worked: ";
-    cin >> minJay;
+    cin >> minJay;  // 15 minutes
 
     cout << endl;
 
     cout << "Please enter the number of days Bill has worked: ";
-    cin >> daysBill;
+    cin >> daysBill;  // 3 days
     cout << "Please enter the number of hours Bill has worked: ";
-    cin >> hoursBill;
+    cin >> hoursBill;  // 15 hours
     cout << "Please enter the number of minutes Bill has worked: ";
-    cin >> minBill;
+    cin >> minBill;  // 20 minutes
 
     totalMin = ((daysJay + daysBill) * minDays) + ((hoursJay + hoursBill) * minHour) + (minJay + minBill);
+    cout << endl;  // Convert everything to minutes: [(2+3 days) * 1440 min] + [(12+15 hours) * 60 min] + (15 + 20min) =  8855 min
+
+    totalDays = (totalMin / minDays);  // (8855 min/ 1440 min) = 6.149 days; ~ 6 days
+    remainderTime = (totalMin % minDays);  // remainder is 215 min
+
+    totalHours = (remainderTime / minHour);  // (215 min / 60 min) = 3.58 hours; ~3 hours 
+    remainderTime = (remainderTime % minHour);  // remainder is 35 min
+
+    totalMin = remainderTime;  // minutes = 35 min
     cout << endl;
 
-    totalDays = (totalMin / minHour);
-    remainderTime = (totalMin % minHour);
-
-    totalHours = (remainderTime / minHour);
-    remainderTime = (remainderTime % minHour);
-
-    totalMin = remainderTime;
-    cout << endl;
-
-    cout << "The total time both of them worked together is: " << totalDays << "days, " << totalHours << "hours and " << totalMin << "minutes. " << endl;
+    cout << "The total time both of them worked together is: " << totalDays << " days, " << totalHours << " hours and " << totalMin << " sminutes. " << endl;
 
     cout << endl;
 
