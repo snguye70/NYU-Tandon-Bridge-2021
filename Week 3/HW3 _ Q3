@@ -1,0 +1,63 @@
+// HW3_Q3.cpp: This file contains the 'main' function. Program execution begins and ends there.
+// Write a program	that does the following:
+// • Ask user to input three	Real numbers a, band c.They	represent	the	parameters	of	a
+// quadratic equation	(ax^2 + bx + c) = 0
+// • Classify to one of	the	following:
+// -’Infinite number of	solutions’(for example, (0^2 + 0x + 0) = 0 has	infinite
+//    number of	solutions)
+// - ’No solution’(for	example, (0^2 + 0x + 4)= 0 has	no	solution)
+// - ’No real solution’(for	example, (0^2 + 4)= 0 has	no	real	solutions)
+// - ’One real solution’
+// - ’Two real solutions’
+// • In	cases there are	1 or 2	real solutions, also print the	solutions.
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    double a, b, c, det, sqRtDet, quadPos, quadNeg, quadZero;
+
+    // Prompt user for parameters in binomial (ax^2 + bx + c)
+    cout << "Please enter value of a: ";
+    cin >> a;
+
+    cout << "Please enter value of b: ";
+    cin >> b;
+
+    cout << "Please enter value of c: ";
+    cin >> c;
+
+    // Determine # of roots for quadratic equation
+    det = pow(b, 2.0) - (4.0 * a * c);
+    // Squareroot the determinant
+    sqRtDet = sqrt(det);
+    // positive solution
+    quadPos = (-b + sqRtDet) / (2.0 * a);
+    // negative solution
+    quadNeg = (-b - sqRtDet) / (2.0 * a);
+    // zero solution
+    quadZero = (-b) / (2.0 * a);
+
+    // Parabola touches x-axis at 1 point
+    if ((a == 0) && (b == 0) && (c != 0)) {
+        cout << "This equation has no solution.";
+    }
+    // horizontal line at 0
+    else if ((a == 0) && (b == 0) && (c == 0)) {
+        cout << "This equation has an infinite number of solutions.";
+    }
+    else if (det > 0) {
+        cout << "This equation has two real solutions x = " << quadPos << " and " << quadNeg;
+    }
+    // Parabola touches x axis at 1 point
+    else if (det == 0) {
+        cout << "This equation has a single real solution x = " << quadZero;
+    }
+    // parabola does not cross x-axis
+    else if (det < 0) {
+        cout << "This equation has no real solutions";
+    }
+    return 0;
+}
