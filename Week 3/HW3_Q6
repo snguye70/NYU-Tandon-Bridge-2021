@@ -1,72 +1,43 @@
-// HW3_Q6.cpp : This file contains the 'main' function. Program execution begins and ends there.
-// Write	a	program	that	computes	the	cost	of	a	long-distance	call.	The	cost	of	 the	call	is	
-// determined	according	to	the	following	rate	schedule :
-// • Any	call	started	between	8 : 00	A.M. and 6 : 00	P.M., Monday	through	Friday, is	billed	at	a
-// rate	of	$0.40	per	minute.
-// • Any	call	starting	before	8 : 00	A.M. or after	6 : 00	P.M., Monday	through	Friday, is	charged
-// at	a	rate	of	$0.25	per	minute.
-// • Any	call	started	on	a	Saturday or Sunday	is	charged	at	a	rate	of	$0.15	per	minute.
-// The	input	will	consist	of	the	day	of	the	week, the	time	the	call	started, and the	length	of	the
-// call	in	minutes.
-// The	output	will	be	the	cost	of	the	call.
-// Notes :
-//    1. The	time	is	to	be	input	in	24 - hour	notation, so	the	time	1 : 30	P.M.is	input	as	 13 : 30
-//    2. The	day	of	the	week	will	be	read	as	one	of	the	following	two	character	string : Mo		Tu
-//    We		Th		Fr		Sa		Su
-//    3. The	number	of	minutes	will	be	input	as	a	positive	integer
+// HW3_Q6// HW3_Q6.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Write a program that	computes	the	cost of	a long-distance	call. The cost of  the call	is determined	according	to	the	following	rate	schedule:
+// • Any call started	between	8:00 A.M. and 6:00	P.M., Monday through Friday, is	billed	at	a rate	of	$0.40	per	minute.
+// • Any call starting	before	8:00 A.M. or after	6:00 P.M., Monday through	Friday, is	charged at a	rate of	$0.25	per	minute.
+// • Any call started on a	Saturday or Sunday	is	charged	at	a rate of	$0.15	per	minute.
+// The	input	will consist of	the	day	of	the	week, the time	the	call started, and the	length	of	the call	in	minutes.
+// The	output will be	the	cost of	the	call.
+// Notes:
+//    1. The time	is	to	be	input	in	24 - hour	notation, so	the	time	1 : 30	P.M.is	input	as	 13 : 30
+//    2. The day	of	the	week	will	be	read	as	one	of	the	following	two	character	string : Mo,Tu, We, Th, Fr, Sa, Su
+//    3. The number	of	minutes	will be	input as a	positive integer
 
 #include <iostream>
 #include<string>
 using namespace std;
 
-const int MINUTES_IN_HOUR = 60; // 1 hour = 60 min
-const int EIGHT_AM_IN_MINUTES = 480; // 8am = 8 hours *60min = 480min
-const int SIX_PM_IN_MINUTES = 1080;  // 6pm = 18 hours * 60min = 1080min
-
 int main()
 {
-    string dayOfWeek;
-    int startHour, startMin, lenCall, callMin;
-    double totalCost;
+	int hour, min, lenCall;
+	char temp;
+	string dayofWeek;
+	double callCost;
 
-    // Prompt user to enter day of week, time the call started, and length of the call in minutes
-    cout << "Enter the day of the week using 2 characters (e.g. Mo, Tu, We, Th, Fr, Sa, Su): ";
-    cin >> dayOfWeek;
+	cout << "Please enter the day of the week (Mo, Tu, We, Th, Fr, Sa, or Su): ";
+	cin >> dayofWeek;
+	cout << "Please enter the time the call started (in24-hour notation, e.g.1:30 PM as 13:30): ";
+	cin >> hour >> temp >> min;
+	cout << "Please enter the length of call (in whole minutes): ";
+	cin >> lenCall;
 
-    cout << "Enter at what hour the call started (24-hour format - e.g. - 1PM = 13): ";
-    cin >> startHour;
+	if (dayofWeek == "Sa" || dayofWeek == "Su")
+		callCost = lenCall * 0.15;
+	else {
+		if (hour < 8 || hour > 18 || (hour == 18 && min > 0))
+			callCost = lenCall * 0.25;
+		else
+			callCost = lenCall * 0.40;
+	}
 
-    cout << "Enter at what minute the call started: ";
-    cin >> startMin;
+	cout << "The cost of the call is $" << callCost << "." << endl;
 
-    cout << "Enter the length of the call in minutes: ";
-    cin >> lenCall;
-
-    // Calculate total call time in minutes
-    callMin = startHour * MINUTES_IN_HOUR + startMin;
-
-    // depending on the day of the week M-F
-    if (dayOfWeek == "Mo" || dayOfWeek == "Tu" || dayOfWeek == "We" || dayOfWeek == "Th" || dayOfWeek == "Fr") {
-
-        // the call was in between 8am - 6pm, charge 40cents/min
-        if ((startMin >= EIGHT_AM_IN_MINUTES) && (callMin <= SIX_PM_IN_MINUTES)) {
-            totalCost = (double)lenCall * 0.40;
-        }
-        // or if call was before 8am or after 6pm, charge 25cents/min
-        else {
-            totalCost = (double)lenCall * 0.25;
-        }
-        // on Saturdays & Sundays
-    } else if (dayOfWeek == "Sa" || dayOfWeek == "Su") {
-
-        // the call is 15cents/min
-        totalCost = (double)lenCall * 0.15;
-
-    } else {
-        cout << "Invalid Request" << endl;
-    }
-
-    cout << "The cost of call is: $" << totalCost << endl;
-
-    return 0;
+	return 0;
 }
