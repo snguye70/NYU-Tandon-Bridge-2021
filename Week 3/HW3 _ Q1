@@ -1,0 +1,62 @@
+// HW3_Q1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//Write	a program that computes how	much a customer	has	to	pay	after purchasing two	
+// items.The price is calculated according to the following	rules:
+// • Buy one get one half off promotion: the lower price item is half price.
+// • If	the	customer is	club card member, additional 10 % off.
+// • Tax is	added
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    double item1, item2, basePrice, tax, discount, totalPrice, price, dis = 0;
+    float actualPrice;
+    char membership;
+
+    // Prompt user to enter price of items
+    cout << "Enter price of first item: ";
+    cin >> item1;
+
+    cout << "Enter price of second item: ";
+    cin >> item2;
+
+    // Prompt user for club card membership
+    cout << "Does customer have a club card? (Y/N): ";
+    cin >> membership;
+
+    // prompt user to enter tax
+    cout << "Enter tax rate, e.g. 5.5 for 5.5% tax: ";
+    cin >> tax;
+
+    basePrice = item1 + item2;
+    if (item1 < item2) {
+        item1 = item1 / 2;
+        totalPrice = item1 + item2;
+    }
+    else {
+        item2 = item2 / 2;
+        totalPrice = item1 + item2;
+    }
+        
+    //if user is card member, deduct 10% from total price
+    if (membership == 'y' || membership == 'Y') {
+        dis = (10 * totalPrice) / float(100);
+    }
+    else {
+        dis = 0;
+    }
+        
+    // after deducting 10%
+    price = totalPrice - dis;
+
+    // add tax to price
+    actualPrice =  price + ((price * tax) / float(100));
+
+    cout << "Base price: " << basePrice << endl;
+    cout << "Price after discounts: " << price << endl;
+    cout << "Total price: " << actualPrice << endl;
+
+    return 0;
+} 
