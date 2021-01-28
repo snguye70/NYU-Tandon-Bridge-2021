@@ -1,0 +1,45 @@
+// HW3_Q5.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Write a program	that prompts for weight	(in	pounds)	and	height	(in	inches)	of	a person, and	
+// prints the weight	status	of that	person.
+// Your	program	should	interact with the	user exactly as	it	shows in the	following example:
+// Please enter weight(in pounds): 135
+// Please enter height(in inches): 71
+// The	weight status is: Normal
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+const double POUND_IN_KILOGRAM = 0.453592;
+const double INCH_IN_METER = 0.0254;
+
+int main()
+{   
+    // Prompt user for weight and height 
+    double weightPounds, weightKg, heightInches, heightMeters, heightSquare, bmi;
+    cout << "Please enter weight (in pounds): ";
+    cin >> weightPounds;
+
+    cout << "Please enter height (in inches): ";
+    cin >> heightInches;
+
+    // Convert Pounds to KG  &&  Inches to Meters
+    weightKg = weightPounds * POUND_IN_KILOGRAM;
+    heightMeters = heightInches * INCH_IN_METER;
+
+    // BMI forumula: (weight/height^2)
+    heightSquare = pow(heightMeters, 2);
+    bmi = weightKg / heightSquare;
+
+    // BMI Range Conditionals, based on weight status
+    if (bmi < 18.5)
+        cout << "The weight status is: Underweight.";
+    else if ((bmi >= 18.5) && (bmi < 25))
+        cout << "The weight status is: Normal.";
+    else if ((bmi >= 25) && (bmi < 30))
+        cout << "The weight status is: Overweight.";
+    else
+        cout << "The weight status is: Obese.";
+
+    return 0;
+}
