@@ -1,0 +1,56 @@
+// HW3_Q4.cpp: This file contains the 'main' function. Program execution begins and ends there.
+// Write a program	that asks the	user to	enter	a	Real	number,	then it	asks the user to	enter	the
+// method by	which they	want to	round	that number(floor, ceiling or to	the	nearest	integer).
+// The	program	will then	print	the	rounded	result.
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+const int FLOOR_ROUND = 1;
+const int CEILING_ROUND = 2;
+const int ROUND = 3;
+
+int main()
+{
+    double realNum, roundNum;
+    int floorNum, ceilingNum;
+
+    // Prompt user for Real Number
+    int choice;
+    cout << "Please enter a Real number: " << endl;
+    cin >> realNum;
+
+    // Prompt user for rounding method 
+    cout << "Choose your rounding method: " << endl;
+    cout << "1. Floor round" << endl;  // Floor = drop decimal value and return only integer. ex: floor(1.2) => 1
+    cout << "2. Ceiling round" << endl;  // Ceiling = returns number rounded up, away from zero to nearest multiple significance
+    cout << "3. Round to the nearest whole number" << endl;  // round number that has decimal lower than 0.5 to lower int, or to higher int
+
+    cin >> choice;
+
+    // switch = execute block of code among many alternatives
+    switch (choice) {
+    case FLOOR_ROUND:  
+        floorNum = realNum;  //code to be executed if
+        cout << floorNum << endl;  // expression is equal to constant 1
+        break;
+    case CEILING_ROUND:
+        ceilingNum = realNum + 1;
+        cout << ceilingNum << endl;
+        break;
+    case ROUND:
+        floorNum = realNum;
+        ceilingNum = realNum + 1;
+        roundNum = realNum - floorNum;
+        if (roundNum < 0.5)
+            cout << floorNum << endl;
+        else
+            cout << ceilingNum << endl;
+        break;
+    default:
+        cout << realNum; // code to be executed if
+        break;  // exprerssion doesnt match any constant
+    }
+    return 0;
+}
