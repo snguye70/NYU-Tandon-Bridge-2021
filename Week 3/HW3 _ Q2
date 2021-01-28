@@ -1,0 +1,47 @@
+// HW3_Q2.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Write a program that:
+// • Asks the user for their name.
+// • Asks the user to input	their graduation year.
+// • Asks the user to input	the	current	year.
+// Assume the student is in	a four - year undergraduate	program.Display	the	current	status the student is in.
+// Possible	status include: not in college yet, freshman, sophomore, junior, senior, graduated.
+// Note: If graduation year equals to	current	year, status is	‘Graduated’; 
+// if graduation year is four years	after current	year, status is	‘Freshman’, etc
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string studentName;
+    int gradYear, currYear, gradStatus;
+
+    // prompt user for name, grad year, and current year
+        cout << "Please enter your name: ";
+    cin >> studentName;
+
+    cout << "Please enter your graduation year: ";
+    cin >> gradYear;
+
+    cout << "Please enter current year: ";
+    cin >> currYear;
+
+    gradStatus = gradYear - currYear;
+
+    // grad status corresponds to years 1-4 (Freshman, Sophomore, Junior, Senior)
+    if (gradStatus > 4)
+        cout << studentName << ", you are not in college yet.";
+    else if (gradStatus == 4)
+        cout << studentName << ", you are a Freshman.";
+    else if (gradStatus == 3)
+        cout << studentName << ", you are a Sophomore.";
+    else if (gradStatus == 2)
+        cout << studentName << ", you are a Junior.";
+    else if (gradStatus == 1)
+        cout << studentName << ", you are a Senior.";
+    else
+        cout << studentName << ", you are graduated.";
+
+    cout << endl;
+    return 0;
