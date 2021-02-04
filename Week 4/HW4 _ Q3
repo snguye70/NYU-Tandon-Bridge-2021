@@ -1,0 +1,29 @@
+// HW4_Q3.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Write a program that reads from the user a positive integer (in a decimal representation), and prints its binary (base 2) representation.
+
+
+#include <iostream>
+using namespace std;
+
+const int BASE_10 = 10;
+
+int main()
+{
+    int value, remainder, binary = 0, counter = 1;
+
+    cout << "Enter a decimal number: ";
+    cin >> value;
+
+    cout << "The binary representation of " << value;
+
+    while (value != 0) {
+        remainder = value % 2;
+        value /= 2;
+        binary += remainder * counter;
+        counter *= BASE_10;
+    }
+
+    cout << " is " << binary << endl;
+
+    return 0;
+}
