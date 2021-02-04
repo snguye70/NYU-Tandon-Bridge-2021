@@ -12,51 +12,70 @@
 
 #include <iostream>
 #include <string>
+
 using namespace std;
 
-int main()
-{
-    int value;
-    string roman;
+int main() {
 
+    int value, romanValue;
+    string result, romanLetter;
+    
+    // Prompt user for value
     cout << "Please enter a decimal number: ";
     cin >> value;
 
+    // Restate value
     cout << value;
+
+    // While Loop if greater than 0
     while (value > 0) {
-        int romanNum;
-        string romanLetter;
-        
+
+        //  1000th Place, assign M
         if (value >= 1000) {
-            romanNum = 1000;
+            romanValue = 1000;
             romanLetter = "M";
-        } else if ((value < 1000) && (value >= 500)){
-            romanNum = 500;
+        }
+        //  500th Place, assign D
+        else if ((value < 1000) && (value >= 500)) {
+            romanValue = 500;
             romanLetter = "D";
-        } else if ((value < 1000) && (value >= 100)){
-            romanNum = 100;
+        }
+        //  100th Place, assign C
+        else if ((value < 1000) && (value >= 100)) {
+            romanValue = 100;
             romanLetter = "C";
-        } else if ((value < 1000) && (value >= 50)){
-            romanNum = 50;
+        }
+        // 50th Place, assign L
+        else if ((value < 1000) && (value >= 50)) {
+            romanValue = 50;
             romanLetter = "L";
-        } else if ((value < 1000) && (value >= 10)){
-            romanNum = 10;
+        }
+        //  10th Place, assign X
+        else if ((value < 1000) && (value >= 10)) {
+            romanValue = 10;
             romanLetter = "X";
-        } else if ((value < 1000) && (value >= 5)) {
-            romanNum = 5;
+        }
+        //  5th Place, assign V
+        else if ((value < 1000) && (value >= 5)) {
+            romanValue = 5;
             romanLetter = "V";
         }
+        //  1s Place, assign I
         else {
-            romanNum = 1;
+            romanValue = 1;
             romanLetter = "I";
         }
 
-        int repeated = value / romanNum;
-        value = value % romanNum;
+        // For repeated letters: Divide entered value by its roman value. Then get the remainder
+        int repeatedLetter = value / romanValue;
+        value = value % romanValue;
 
-        while (repeated--) {
-            roman += romanNum;
+        // subtract 1 repeated letter, then add and asigned to the result
+        while (repeatedLetter--) {
+            result += romanLetter;
         }
+
     }
-    cout << "is " << roman << endl;
+
+    cout << " is " << result << endl;
 }
