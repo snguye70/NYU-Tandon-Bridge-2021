@@ -11,46 +11,51 @@ using namespace std;
 int main()
 {
     // Part A
-    int sequenceEntered, numberEntered, sequenceTotal = 1;
-    double geometricMean;
+    int lenSequence, values, sequenceTotal = 1;
+    double geoMean;
 
-    cout << "Section A: " << endl << endl;
-
+    //Prompt user to enter the length, and values of #s
     cout << "Please enter the length of the sequence: ";
-    cin >> sequenceEntered;
+    cin >> lenSequence;
 
     cout << "Please enter your sequence: " << endl;
 
-    for (int i = 0; i < sequenceEntered; i++) {
-        cin >> numberEntered;
-        sequenceTotal *= numberEntered;
+    // for every time that is is less than the length, multiply values with # of values
+    for (int i = 0; i < lenSequence; i++) {
+        cin >> values;
+        sequenceTotal *= values;
     }
-    geometricMean = pow(sequenceTotal, 1.0 / (double)sequenceEntered);
-    cout << "The geometric mean is: " << geometricMean << endl;
+    //pow() computes base number raised to power of exponent
+    //follow the square root function for geometric mean 
+    geoMean = pow(sequenceTotal, 1.0 / (double)lenSequence);
+    cout << "The geometric mean is: " << geoMean << endl;
 
     // Part B
     cout << endl << "Section B: " << endl << endl;
 
-    int numberEnteredSectionB, sequenceTotalSectionB = 1, counterSectionB = 0;
-    double geometricMeanSectionB;
+    int lenSequenceB = 0, sequenceTotalB = 1, counterB = 0;
+    double geoMeanB;
 
+    //Prompt user to enter the length, and values of #s
     cout << "Please enter a non-empty sequence of positive integers, each one in a separate line. End your sequence by typing -1:" << endl;
-
-    while (numberEnteredSectionB != -1) {
-        cin >> numberEnteredSectionB;
-
-        if (numberEnteredSectionB == -1) {
+    
+    // when length is not -1 
+    while (lenSequenceB != -1) {
+        cin >> lenSequenceB;
+        
+        //if sequence has -1, end loop
+        if (lenSequenceB == -1) {
             break;
         }
-
-        sequenceTotalSectionB *= numberEnteredSectionB;
-        counterSectionB++;
+        // multiple sequence with #of values, add 1
+        sequenceTotalB *= lenSequenceB;
+        counterB++;
 
     }
+    // apply geometric mean function 
+    geoMeanB = pow(sequenceTotalB, 1.0 / counterB);
 
-    geometricMeanSectionB = pow(sequenceTotalSectionB, 1.0 / counterSectionB);
-
-    cout << "The geometric mean is: " << geometricMeanSectionB << endl;
+    cout << "The geometric mean is: " << geoMeanB << endl;
 
     return 0;
 }
