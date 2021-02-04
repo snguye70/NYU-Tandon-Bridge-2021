@@ -1,0 +1,56 @@
+// HW4_Q4.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Write two versions of a program that reads a sequence of positive integers from the user, calculates their geometric mean, and print the geometric mean.
+// a) First read the length of the sequence.
+// b) Keep reading the numbers until -1 is entered.
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main()
+{
+    // Part A
+    int sequenceEntered, numberEntered, sequenceTotal = 1;
+    double geometricMean;
+
+    cout << "Section A: " << endl << endl;
+
+    cout << "Please enter the length of the sequence: ";
+    cin >> sequenceEntered;
+
+    cout << "Please enter your sequence: " << endl;
+
+    for (int i = 0; i < sequenceEntered; i++) {
+        cin >> numberEntered;
+        sequenceTotal *= numberEntered;
+    }
+    geometricMean = pow(sequenceTotal, 1.0 / (double)sequenceEntered);
+    cout << "The geometric mean is: " << geometricMean << endl;
+
+    // Part B
+    cout << endl << "Section B: " << endl << endl;
+
+    int numberEnteredSectionB, sequenceTotalSectionB = 1, counterSectionB = 0;
+    double geometricMeanSectionB;
+
+    cout << "Please enter a non-empty sequence of positive integers, each one in a separate line. End your sequence by typing -1:" << endl;
+
+    while (numberEnteredSectionB != -1) {
+        cin >> numberEnteredSectionB;
+
+        if (numberEnteredSectionB == -1) {
+            break;
+        }
+
+        sequenceTotalSectionB *= numberEnteredSectionB;
+        counterSectionB++;
+
+    }
+
+    geometricMeanSectionB = pow(sequenceTotalSectionB, 1.0 / counterSectionB);
+
+    cout << "The geometric mean is: " << geometricMeanSectionB << endl;
+
+    return 0;
+}
