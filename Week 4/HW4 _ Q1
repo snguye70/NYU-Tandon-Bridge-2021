@@ -11,17 +11,20 @@ int main()
 {
 	int n, evenNum;
 	int counter = 1;
+	
+	// Prompt user for value, n
 	cout << "Please enter a positive integer: ";
 	cin >> n;
 
 	cout << endl << "Part A: " << endl;
-
+	
+	// part A: WHILE LOOP. read positive interger, print even numbers 
 	while (counter <= n) {
 		evenNum = counter * 2;
 		cout << evenNum << endl;
 		counter++;
 	}
-
+	// part B: FOR LOOP. read positive interger, print even numbers 
 	cout << endl << "Part B: " << endl;
 	for (int i = 1; i <= n; i++) {
 		evenNum = i * 2;
