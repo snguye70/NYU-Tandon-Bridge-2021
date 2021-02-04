@@ -1,0 +1,62 @@
+// HW4_Q2.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// In this question we will use a simplified version of the Roman Numerals System to represent positive integers.
+// The digits in this system are I, V, X, L, C, Dand M.Each digit corresponds to a decimal value.
+// A number in the simplified Roman numerals system is a sequence of Roman digits, which follow these 2 rules:
+// 1. The digits form a monotonically non-increasing sequence. That is the value of each digit is less than or equal to the value of the digit that came before it.
+// For example, DLXXVI is a monotonically non-increasing sequence of Roman digits, but XIV is not.
+// 2. There is no limit on the number of times that ‘M’ can appear in the number.
+// ‘D’, ‘L’and ‘V’ can each appear at most one time in the number
+// ‘C’, ‘X’and ‘I’ can each appear at most four times in the number.
+// For example : IIII, XVIIand MMMMMMDCCLXXXXVII are legal numbers in our simplified Roman numeral system, but IIIII, XIV, VVIand CCXLIII are not.
+// Write a program that reads from the user a(decimal) number, and prints it’s representation in the simplified Roman numerals system.
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    int value;
+    string roman;
+
+    cout << "Please enter a decimal number: ";
+    cin >> value;
+
+    cout << value;
+    while (value > 0) {
+        int romanNum;
+        string romanLetter;
+        
+        if (value >= 1000) {
+            romanNum = 1000;
+            romanLetter = "M";
+        } else if ((value < 1000) && (value >= 500)){
+            romanNum = 500;
+            romanLetter = "D";
+        } else if ((value < 1000) && (value >= 100)){
+            romanNum = 100;
+            romanLetter = "C";
+        } else if ((value < 1000) && (value >= 50)){
+            romanNum = 50;
+            romanLetter = "L";
+        } else if ((value < 1000) && (value >= 10)){
+            romanNum = 10;
+            romanLetter = "X";
+        } else if ((value < 1000) && (value >= 5)) {
+            romanNum = 5;
+            romanLetter = "V";
+        }
+        else {
+            romanNum = 1;
+            romanLetter = "I";
+        }
+
+        int repeated = value / romanNum;
+        value = value % romanNum;
+
+        while (repeated--) {
+            roman += romanNum;
+        }
+    }
+    cout << "is " << roman << endl;
+}
