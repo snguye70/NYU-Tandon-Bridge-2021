@@ -9,25 +9,29 @@ int main()
 {
     int n, line, space, star;
 
+    // prompt user for number, n
     cout << "Enter a positive integer: ";
     cin >> n;
 
+    // for every line greater equal to n, add one more line
     for (line = 1; line <= n; line++) {
+        //for every space greater equal to line, add another space
         for (space = 1; space <= line; space++) {
             cout << " ";
         }
-
+        // initialize star, for every star greater than equal to  (number x2) - (line x2), add another star
         for (star = 0; star <= (n * 2) - (line * 2); star++) {
             cout << "*";
         }
         cout << endl;
     }
-
+    // for every line greater equal to n, add one more line
     for (line = 1; line <= n; line++) {
+        //for every space greater equal to number, add another space
         for (space = 0; space <= n - line; space++) {
             cout << " ";
         }
-
+        // initialize star, for every star greater than equal to  (number x2) - 1, add another star
         for (star = 1; star <= (line * 2) - 1; star++) {
             cout << "*";
         }
@@ -36,3 +40,4 @@ int main()
 
     return 0;
 }
+
