@@ -1,0 +1,38 @@
+// hw4_q5.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Write a program that asks the user to input a positive integer n, and prints a textual image of an hourglass made of 2n lines with asterisks.
+
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n, line, space, star;
+
+    cout << "Enter a positive integer: ";
+    cin >> n;
+
+    for (line = 1; line <= n; line++) {
+        for (space = 1; space <= line; space++) {
+            cout << " ";
+        }
+
+        for (star = 0; star <= (n * 2) - (line * 2); star++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+    for (line = 1; line <= n; line++) {
+        for (space = 0; space <= n - line; space++) {
+            cout << " ";
+        }
+
+        for (star = 1; star <= (line * 2) - 1; star++) {
+            cout << "*";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
