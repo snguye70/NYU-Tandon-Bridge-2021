@@ -1,0 +1,59 @@
+// HW5_2.cpp : This file contains the 'main' function. Program execution begins and ends there.
+// Implement a number guessing game. The program should randomly choose an integer between 1 and 100 (inclusive), and have the user try to guess that number.
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+
+using namespace std;
+
+const int Number_of_Guesses = 5;
+
+int main() {
+
+    int value, random, attempts = 0, fromRange = 1, toRange = 100;
+    bool toContinue = true, done = false;
+
+    srand(time(0));
+
+    // prompt user for a guess 
+    cout << "I thought of a number between 1 and 100! Try to guess it." << endl;
+    random = (rand() % toRange) + 1;
+
+    // creating conditionals for continue and over
+    while ((toContinue) && (!done)) {
+
+        // attempted # of guesses
+        if (attempts < Number_of_Guesses) {
+            cout << "Range: [" << fromRange << ", " << toRange << "], Number of guesses left: " << Number_of_Guesses - attempts << endl;
+            cout << "Your guess:";
+            cin >> value;
+
+            attempts++;
+
+            // when guessed incorrectly, needs to be bigger
+            if (value < random) {
+                fromRange = value + 1;
+                cout << "Wrong! My number is bigger." << endl << endl;
+            }
+            // when guessed incorrectly, needs to be smaller
+            else if (value > random) {
+                toRange = value - 1;
+                cout << "Wrong! My number is smaller." << endl << endl;
+            }
+            // program ends when true
+            else {
+                done = true;
+                cout << "Congrats! You guessed my number in " << attempts << " guesses." << endl;
+            }
+        }
+        else {
+            // true and false conditional
+            toContinue = false; 
+            done = true;
+            cout << "Out of guesses! My number is " << randomNumber << endl;
+        }
+
+    }
+    return 0;
+}
